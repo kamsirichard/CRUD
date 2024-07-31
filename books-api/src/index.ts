@@ -7,10 +7,10 @@ import { createBook, getBooks, getBook, updateBook, deleteBook, updateBookCover 
 import fs from 'fs';
 import path from 'path';
 
-
+// Load environment variables from .env file
 dotenv.config();
 
-
+// Create uploads directory if it doesn't exist
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
@@ -19,19 +19,26 @@ if (!fs.existsSync(uploadsDir)) {
 const app = express();
 const port = process.env.PORT || 3001;
 
-
+// Middleware
 app.use(bodyParser.json());
-app.use('/uploads', express.static(uploadsDir)); 
+app.use('/uploads', express.static(uploadsDir)); // Serve static files from uploads directory
 
-
-mongoose.connect(process.env.MONGODB_URI || '')
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI || '', {
+  // No need for useNewUrlParser and useUnifiedTopology options in Mongoose 6.x
+})
   .then(() => console.log('MongoDB connected'))
   .catch((err) => {
     console.error('MongoDB connection error:', err);
     process.exit(1); 
   });
 
+// Root route
+app.get('/', (req, res) => {
+  res.send('Welcome to the Books API');
+});
 
+// API Routes
 app.post('/books', createBook);
 app.get('/books', getBooks);
 app.get('/books/:id', getBook);
@@ -39,6 +46,7 @@ app.put('/books/:id', updateBook);
 app.delete('/books/:id', deleteBook);
 app.patch('/books/cover-image/:id', upload.single('cover'), updateBookCover);
 
+// Start the server
 if (process.env.NODE_ENV !== 'test') {
   const server = app.listen(port, () => {
     console.log(`Server running on port ${port}`);
@@ -53,7 +61,6 @@ if (process.env.NODE_ENV !== 'test') {
     console.log('Server has closed.');
   });
 
-  
   process.on('uncaughtException', (err) => {
     console.error('Uncaught Exception:', err);
     process.exit(1); 
