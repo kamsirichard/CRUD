@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import upload from './middleware';
+import upload from './middleware'; // Make sure your upload middleware is correctly set up
 import { createBook, getBooks, getBook, updateBook, deleteBook, updateBookCover } from './controllers';
 import fs from 'fs';
 import path from 'path';

@@ -1,4 +1,3 @@
-// src/controllers.ts
 import { Request, Response } from 'express';
 import Book from './models';
 
