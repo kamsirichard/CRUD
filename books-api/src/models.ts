@@ -1,20 +1,20 @@
-import mongoose, { Document, Schema, model } from 'mongoose';
+// src/models.ts
+import mongoose, { Document, Schema } from 'mongoose';
 
 interface IBook extends Document {
   title: string;
   author: string;
-  publishedDate: Date;
   isbn: string;
   coverImage?: string;
 }
 
-const bookSchema = new Schema<IBook>({
+const bookSchema: Schema = new Schema({
   title: { type: String, required: true },
   author: { type: String, required: true },
-  publishedDate: { type: Date, required: true },
-  isbn: { type: String, required: true, unique: true },
-  coverImage: String
+  isbn: { type: String, required: true, unique: true }, // Ensure ISBN is unique
+  coverImage: { type: String }
 });
 
-const Book = model<IBook>('Book', bookSchema);
+const Book = mongoose.model<IBook>('Book', bookSchema);
+
 export default Book;
