@@ -1,4 +1,3 @@
-// src/models.ts
 import mongoose, { Document, Schema } from 'mongoose';
 
 interface IBook extends Document {
@@ -11,7 +10,7 @@ interface IBook extends Document {
 const bookSchema: Schema = new Schema({
   title: { type: String, required: true },
   author: { type: String, required: true },
-  isbn: { type: String, required: true, unique: true }, // Ensure ISBN is unique
+  isbn: { type: String, required: true, unique: true }, 
   coverImage: { type: String }
 });
 

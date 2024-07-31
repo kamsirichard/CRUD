@@ -10,7 +10,7 @@
     "types": ["jest"]
   },
   "include": [
-    "src/types/**/*.d.ts",  // Ensure this is included
+    "src/types/**/*.d.ts", 
     "src/**/*"
   ],
   "exclude": ["node_modules"]
