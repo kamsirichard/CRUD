@@ -47,7 +47,7 @@ This is a simple API for managing a collection of books. You can create, read, u
    yarn install
    ```
 
-3. ### Environment Variables
+3. # Environment Variables
 
 Create a `.env` file in the root directory and add your MongoDB connection string and port number:
 
@@ -58,7 +58,7 @@ PORT=3001
 
 Replace `your_mongodb_connection_string` with your actual MongoDB connection string.
 
-## Usage
+# Usage
 
 1 ### Start the Server
 
@@ -72,7 +72,7 @@ yarn start
 
 The server will be running on the port you specified in the `.env` file (default is `3001`).
 
-## API Endpoints
+# API Endpoints
 
 1 ### Create a Book
 
@@ -95,13 +95,13 @@ The server will be running on the port you specified in the `.env` file (default
   - `201 Created`: Book created successfully
   - `409 Conflict`: Book with this ISBN already exists
 
-2 ### Get All Books
+2  Get All Books
 
 - **URL:** `/books`
 - **Method:** `GET`
 - **Response:** `200 OK`: List of books
 
-3 ### Get a Book by ID
+3  Get a Book by ID
 
 - **URL:** `/books/:id`
 - **Method:** `GET`
@@ -109,7 +109,7 @@ The server will be running on the port you specified in the `.env` file (default
   - `200 OK`: Book details
   - `404 Not Found`: Book not found
 
-4 ### Update a Book
+4  Update a Book
 
 - **URL:** `/books/:id`
 - **Method:** `PUT`
@@ -130,7 +130,7 @@ The server will be running on the port you specified in the `.env` file (default
   - `200 OK`: Book updated successfully
   - `404 Not Found`: Book not found
 
-5 ### Delete a Book
+5  Delete a Book
 
 - **URL:** `/books/:id`
 - **Method:** `DELETE`
@@ -138,7 +138,7 @@ The server will be running on the port you specified in the `.env` file (default
   - `200 OK`: Book deleted successfully
   - `404 Not Found`: Book not found
 
-6 ### Update Book Cover Image
+6  Update Book Cover Image
 
 - **URL:** `/books/cover-image/:id`
 - **Method:** `PATCH`
